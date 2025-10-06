@@ -1,39 +1,14 @@
-import { useEffect, useState } from "react"
+  import { useEffect, useState } from "react"
 
 
-import { 
-  Geist, 
-  Geist_Mono, 
-  Orbitron, 
-  Roboto, 
-  Inter, 
-  Russo_One, 
-  Open_Sans as OpenSans, 
-  Fredoka, 
-  Baloo_2, 
-  Nunito,  
-  Bebas_Neue, 
-  Montserrat, 
-  Lato
-} from "next/font/google";
+  import {Bebas_Neue, Montserrat} from "next/font/google";
 
 // fontes
-const orbitron = Orbitron({ weight: "400", subsets: ["latin"] });
-const roboto = Roboto({ weight: "400", subsets: ["latin"] });
-const inter = Inter({ weight: "400", subsets: ["latin"] });
-const russoOne = Russo_One({ weight: "400", subsets: ["latin"] });
-const openSans = OpenSans({ weight: "400", subsets: ["latin"] });
-const fredoka = Fredoka({ weight: "400", subsets: ["latin"] });
-const baloo2 = Baloo_2({ weight: "600", subsets: ["latin"] });
-const nunito = Nunito({ weight: "700", subsets: ["latin"] });
-const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"] }); // só 400
+const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ weight: "500", subsets: ["latin"] });
-const lato = Lato({ weight: "400", subsets: ["latin"] });
 
 
 // icon heroicon
-import { HomeIcon } from "@heroicons/react/16/solid";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { RectangleStackIcon } from "@heroicons/react/24/outline";
 import { MegaphoneIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
@@ -48,30 +23,39 @@ import { faPlaystation } from "@fortawesome/free-brands-svg-icons"
 import { faXbox } from "@fortawesome/free-brands-svg-icons"
 import { faComputer } from "@fortawesome/free-solid-svg-icons"
 import { faTag } from "@fortawesome/free-solid-svg-icons"
-import { faGridVertical } from "@fortawesome/free-solid-svg-icons"
 import { faComments } from "@fortawesome/free-solid-svg-icons"
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons"
 import { faUsers } from "@fortawesome/free-solid-svg-icons"
 import { faNewspaper } from "@fortawesome/free-solid-svg-icons"
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons"
-import { faFaceMehBlank } from "@fortawesome/free-solid-svg-icons"
+
+
+// providers
+  import { UseSidebar } from "@/app/contexts/SidebarContext";
+
 
 export default function BodyMainSidebar(){
 
       const [handleDropDownButton, sethandleDropDown] = useState<boolean[]>([false, false])
-    
+
+      // condition when sidebar size change
+
+      const {isOpen, toggleSidebar} = UseSidebar();
+
+
+      
       function handleDropDown(index:number){
         sethandleDropDown(prev=> prev.map((_,i)=> i === index? !prev[i]: false))
+        if(isOpen === false){
+          toggleSidebar()
+        }
       }
-    
-    
-      useEffect(()=>{
-        console.log(handleDropDownButton)
-      },[handleDropDownButton])
-    
-    
-    
-    
+
+    useEffect(()=>{
+      if(isOpen === false){
+        sethandleDropDown([false, false]);
+      }
+    },[isOpen])
+
       const dropdownsLists =[
      [
            {
@@ -137,25 +121,35 @@ export default function BodyMainSidebar(){
 
 
     return(
-      <ul className={`w-[90%] m-2.5 flex justify-center gap-1.5 flex-col bg-[#068FFF] 
-          transform transition-all duration-750 ease-in-out rounded-[.5em]
-          items-center ${handleDropDownButton.some( isOpen => isOpen)? 'h-[38em] delay-150': 'h-[25em] delay-700'}`}>
-            <li className="w-full h-[3em] text-[#fff] flex justify-center items-center">
-              <button className=" w-[90%] h-full flex justify-center px-0.5 items-center
-                flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
-                ">
-                  <RectangleStackIcon className="size-7"/>
-                  <p className={`w-[80%] h-full flex justify-center 
-                  items-center ${bebasNeue.className}`}>your Games</p>
-              </button>
-            </li>
+      <ul className={`w-[90%] m-2.5 flex justify-center gap-1.5 flex-col  
+          transform transition-all ease-in-out rounded-[.5em] overflow-hidden
+          items-center ${handleDropDownButton.some( isOpen => isOpen)? 'h-[38em] delay-150  duration-750': 
+            'h-[25em] delay-700  duration-750'}          
+          `}>
+
+            {/* your game button */}
             <li className="w-[95%] h-[3em] text-[#fff] items-center
                 flex-row">
               <button className=" w-full h-full flex justify-center px-0.5 items-center
-                flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]">
+                flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000] focus:bg-[#fff] focus:text-[#151515]">
+                  <RectangleStackIcon className="size-7"/>
+                  <p className={`w-[80%] h-full justify-center
+                  items-center ${bebasNeue.className}
+                  transform transition-all duration-300 ease-in-out
+                  ${isOpen? 'flex': 'hidden'}
+                  `}>Your Game</p>
+              </button>
+            </li>
+
+            {/* news button */}
+            <li className="w-[95%] h-[3em] text-[#fff] items-center
+                flex-row">
+              <button className={`w-full h-full flex justify-center px-0.5 items-center
+                flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
+                focus:bg-[#fff] focus:text-[#151515]`}>
                   <MegaphoneIcon className="size-7"/>
-                  <p className={`w-[80%] h-full flex justify-center
-                  items-center ${bebasNeue.className}`}>News</p>
+                  <p className={`w-[80%] h-full justify-center
+                  items-center ${bebasNeue.className} ${isOpen? 'flex': 'hidden'}`}>News</p>
               </button>
             </li>
                       
@@ -169,7 +163,7 @@ export default function BodyMainSidebar(){
                 flex-row active:bg-[#fff] active:text-[#151515]" onClick={()=> handleDropDown(0)}>
                   <ShoppingBagIcon className="size-7"/>
                   <p className={`w-[80%] h-full  flex justify-end gap-9  
-                    items-center ${bebasNeue.className}`}>Store
+                    items-center ${bebasNeue.className}  ${isOpen? 'flex': 'hidden'}`}>Store
                     <ChevronDownIcon className={`size-5
                       transform transition-transform duration-500 ease-in
                       ${handleDropDownButton[0]? `rotate-180`:`rotate-0 duration-200 `}`}/>
@@ -190,7 +184,7 @@ export default function BodyMainSidebar(){
                             text-[#151515]  ">
                               <FontAwesomeIcon icon={value.faUIcon} className={`value.size`}/>
                             </div>
-                            <p className={` ${lato.className} w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
+                            <p className={` ${montserrat.className} w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
                         </button>
                       </li>
                     ))}
@@ -210,7 +204,7 @@ export default function BodyMainSidebar(){
                 flex-row active:bg-[#fff] active:text-[#151515]" onClick={()=> handleDropDown(1)}>
                   <GlobeAltIcon className="size-7"/>
                   <p className={`w-[80%] h-full  flex justify-end gap-9  
-                  items-center ${bebasNeue.className}`}> Network
+                  items-center ${bebasNeue.className}  ${isOpen? 'flex': 'hidden'}`}> Network
                   <ChevronDownIcon className={`size-5
                       transform transition-transform duration-500 ease-in
                       ${handleDropDownButton[1]? `rotate-180`:`rotate-0 duration-200 `}`}/>
@@ -225,13 +219,14 @@ export default function BodyMainSidebar(){
                           transform transition-all duration-300 ease-in-out rounded-[.5em]
                           ${value.animationCondition}
                         `}>
-                        <button className={`w-full h-full flex justify-center items-center gap-1
+                        <button className={`w-full h-full flex justify-center items-center gap-1 
+                        focus:bg-[#fff] focus:text-[#151515]
                         `}>
                             <div className="w-[2em] h-[2em] bg-[#fff] rounded-[.5em] flex justify-center items-center
                             text-[#151515]  ">
                               <FontAwesomeIcon icon={value.faUIcon} className={`value.size`}/>
                             </div>
-                            <p className={` ${lato.className} w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
+                            <p className={` ${montserrat.className} w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
                         </button>
                       </li>
                     ))}
@@ -241,19 +236,21 @@ export default function BodyMainSidebar(){
               <li className="w-full h-[3em] text-[#fff] flex justify-center items-center">
               <button className=" w-[90%] h-full flex justify-center px-0.5 items-center
                 flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
+                focus:bg-[#fff] focus:text-[#151515]
                 ">
                   <InformationCircleIcon className="size-7"/>
                   <p className={`w-[80%] h-full flex justify-center 
-                  items-center ${bebasNeue.className}`}>Suport</p>
+                  items-center ${bebasNeue.className}  ${isOpen? 'flex': 'hidden'}`}>Suport</p>
               </button>
             </li>
             <li className="w-[95%] h-[3em] text-[#fff] items-center
                 flex-row">
               <button className=" w-full h-full flex justify-center px-0.5 items-center
-                flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]">
+                flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
+                focus:bg-[#fff] focus:text-[#151515]">
                   <Cog8ToothIcon className="size-7"/>
                   <p className={`w-[80%] h-full flex justify-center
-                  items-center ${bebasNeue.className}`}>Settings</p>
+                  items-center ${bebasNeue.className}  ${isOpen? 'flex': 'hidden'}`}>Settings</p>
               </button>
             </li>
           </ul>

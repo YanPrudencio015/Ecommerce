@@ -1,6 +1,10 @@
 'use client'
 import Image from "next/image";
 
+
+// contexts
+import { UseSidebar } from "../contexts/SidebarContext";
+
 // icons
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
@@ -9,28 +13,19 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/react/16/solid";
 
 // fonts
-import {Orbitron, Roboto, Inter, Russo_One, Audiowide, 
-        Open_Sans, Fredoka, Baloo_2, Nunito, 
-        Bebas_Neue, Montserrat, Lato, 
-        } from "next/font/google"
+import {Orbitron, Roboto, Montserrat } from "next/font/google"
+import { useEffect } from "react";
 
 
 const orbitron = Orbitron({weight:"400", subsets:["latin"]});
 const roboto = Roboto({weight:"400", subsets:["latin"]});
-const inter = Inter({weight:"400", subsets:["latin"]});
-const russoOne = Russo_One ({weight:"400", subsets:["latin"]});
-const audioWise = Audiowide({weight:"400", subsets:["latin"]});
-const OpenSans = Open_Sans({weight:"400", subsets:["latin"]})
-const fredoka = Fredoka({weight:"400", subsets:["latin"]});
-const baloo2 = Baloo_2({weight:"600", subsets:["latin"]});
-const nunito = Nunito({weight:"700", subsets:["latin"]});
-const bebasNeue = Bebas_Neue({weight:"400", subsets:["latin"]});
 const montserrat = Montserrat({weight:"400", subsets:["latin"]});
-const lato = Lato({weight:"400", subsets:["latin"]});
 
 
 // login options only appears whe the size is larger than mobiles sizes
 export default function Header(){
+
+    const {isOpen, toggleSidebar} = UseSidebar();
 
     return(
         <div className="bg-[#151515]
@@ -71,7 +66,7 @@ export default function Header(){
                         sm:flex
                         sm:justify-center
                         sm:items-center
-                    "
+                    " onClick={()=>{toggleSidebar()}}
                     >
                             <Bars3BottomLeftIcon className="text-[#fff] 
                                 size-7
@@ -80,9 +75,9 @@ export default function Header(){
                                 "/>
                             <h1 className={`hidden
                                 lg:inline 
-                                ${orbitron.className}`}>LevelUp</h1>
+                                ${orbitron.className} text-[#fff]`}>LevelUp</h1>
                         </button>
-                        <h1 className={`lg:hidden ${orbitron.className}`}>LevelUp</h1>
+                        <h1 className={`lg:hidden ${orbitron.className} text-[#fff]`}>LevelUp</h1>
                             {/* user's navbar list*/}
                         <ul className="
                             border-[#fff]
@@ -261,7 +256,7 @@ export default function Header(){
                                 <span className={`hidden
                                                 sm:inline
                                                 text-[.8em]
-                                                ${montserrat.className}`}>Hello, UserName</span>
+                                                ${montserrat.className} text-[#fff]`}>Hello, UserName</span>
                             </li>
                         </ul>
                      
