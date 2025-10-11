@@ -67,11 +67,11 @@ export default function HeroSection(){
 
                     <div className=" flex justify-between gap-3 h-full w-[5em] md:items-center md:w-[8em]">
                         <button className="rounded-[2em] w-[3em] flex 
-                            justify-center items-center h-[2em] md:h-[3em] bg-[#068FFF] hover:bg-[#fff] group
+                            justify-center items-center h-[2em] md:h-[3em] bg-[#151515] hover:bg-[#fff] group
                             cursor-pointer ">
                             <ShoppingBagIcon className="size-5 md:size-7 text-[#fff] group-hover:text-[#068FFF]" /></button>
                         <button className="rounded-[2em] w-[3em] flex 
-                            justify-center items-center h-[2em] md:h-[3em] bg-[#068FFF]  hover:bg-[#fff] group cursor-pointer">
+                            justify-center items-center h-[2em] md:h-[3em] bg-[#151515]  hover:bg-[#fff] group cursor-pointer">
                             <HeartIcon className="size-5 md:size-7 text-[#fff] group-hover:text-[#068FFF]" /></button>
                     </div>
                 </div>

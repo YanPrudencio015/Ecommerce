@@ -1,11 +1,10 @@
-  import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import {Bebas_Neue, Montserrat} from "next/font/google";
 
-
-  import {Bebas_Neue, Montserrat} from "next/font/google";
 
 // fontes
-const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"] });
-const montserrat = Montserrat({ weight: "500", subsets: ["latin"] });
+const bebasNeue = Bebas_Neue({weight:"400", subsets:["latin"]});
+const montserrat = Montserrat({weight:"400", subsets:["latin"]});
 
 
 // icon heroicon
@@ -68,7 +67,7 @@ export default function BodyMainSidebar(){
             animationCondition:`${handleDropDownButton[0] ? "translate-x-0 delay-800 " : "-translate-x-[300px] delay-300"}`,
             faUIcon:faLayerGroup, 
             size:[["size-5"]],
-            name:"categories"    
+            name:"Categories"    
         },
         {
             animationCondition:`${handleDropDownButton[0] ? "translate-x-0 delay-900 " : "-translate-x-[300px] delay-400"}`,
@@ -121,10 +120,10 @@ export default function BodyMainSidebar(){
 
 
     return(
-      <ul className={`w-[90%] m-2.5 flex justify-center gap-1.5 flex-col  
+      <ul className={`w-[90%]  flex justify-center gap-1.5 flex-col 
           transform transition-all ease-in-out rounded-[.5em] overflow-hidden
-          items-center ${handleDropDownButton.some( isOpen => isOpen)? 'h-[38em] delay-150  duration-750': 
-            'h-[25em] delay-700  duration-750'}          
+          items-center ${handleDropDownButton.some( isOpen => isOpen)? ' m-2.5 h-[38em] delay-150  duration-750': 
+            'h-[25em] delay-700  duration-750 m-1'}          
           `}>
 
             {/* your game button */}
@@ -184,7 +183,7 @@ export default function BodyMainSidebar(){
                             text-[#151515]  ">
                               <FontAwesomeIcon icon={value.faUIcon} className={`value.size`}/>
                             </div>
-                            <p className={` ${montserrat.className} w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
+                            <p className={` ${montserrat.className} text-[#fff] w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
                         </button>
                       </li>
                     ))}

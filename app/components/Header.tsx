@@ -28,23 +28,9 @@ export default function Header(){
     const {isOpen, toggleSidebar} = UseSidebar();
 
     return(
-        <div className="bg-[#151515]
-                        fixed
-                        z-50
-                        h-[4em] 
-                        w-full 
-                        flex 
-                        justify-between 
-                        items-center 
-                        px-[3%] 
-                        before:absolute 
-                        before:bottom-0 
-                        before:left-[50%] 
-                        before:translate-x-[-50%] 
-                        before:translate-y-[-50%] 
-                        before:w-[70%] 
-                        before:h-[1px] 
-                        rounded-0">
+        <div className="bg-[#151515] fixed z-50 h-[4em] w-full flex justify-between items-center 
+            px-[3%] before:absolute before:bottom-0 before:left-[50%] before:translate-x-[-50%] 
+            before:translate-y-[-50%] before:w-[70%] before:h-[1px] rounded-0">
 
                             {/* Menu bars button */}
                         <button   className="
