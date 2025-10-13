@@ -6,15 +6,14 @@ import MostPopular from "./PopularSlides";
 
 
 export default function Slides(){
-
-    const [windowSize, setWindowSize] = useState(window.innerWidth)
+    const [windowSize, setWindowSize] = useState<number|null>(null)
 
 
     useEffect(()=>{
         function handleWindownSize(){
-            setWindowSize(window.innerWidth)
+            setWindowSize(window.innerWidth);
         }
-
+        handleWindownSize()
         window.addEventListener('resize', handleWindownSize)
         
         return ()=>{
@@ -32,7 +31,7 @@ export default function Slides(){
             2. Principais novidades
             2. good ratios 
             2. categories */}
-            <MostPopular windowSize={windowSize} />
+            {windowSize !== null && <MostPopular windowSize={windowSize} />}
         </div>
     )
 }
