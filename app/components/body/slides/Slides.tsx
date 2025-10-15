@@ -25,12 +25,11 @@ export default function Slides(){
     return(
         <div className="w-full h-full bg-[#9d14ff]">
             {/* slides will be here
-            1. Most popular
-            2. about your choices (if the user once bouth something)
-            2. Suggestions
+            1. Most popular - played
             2. Principais novidades
-            2. good ratios 
-            2. categories */}
+            3. about your choices (if the user once bouth something)
+            4. good ratios 
+            5. categories */}
             {windowSize !== null && <MostPopular windowSize={windowSize} />}
         </div>
     )
