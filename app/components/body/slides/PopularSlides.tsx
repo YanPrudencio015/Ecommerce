@@ -49,6 +49,19 @@ export default function MostPopular({windowSize}: MostPopularprops){
             const data = await fetch('api/games');
             const res = await data.json()
             setPopularGames(res)
+           
+           try{
+
+               if(Array.isArray(res)){
+                   setPopularGames(res)
+                } else{
+                    console.error('error on API response: ', res)
+                    setPopularGames([])
+                }
+            } catch(error){
+                console.error ("error to load the games: ", res)
+                setPopularGames([])
+            }
         }
          loagames()
     },[])
