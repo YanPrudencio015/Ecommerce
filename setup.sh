@@ -10,7 +10,6 @@ cat > .env <<EOL
 # IGDB / Twitch credentials
 TWITCH_CLIENT_ID=2gu7wigtkubhl3tvhba44uuzl2jw8s
 TWITCH_CLIENT_SECRET=qkd999js3l6chntzo24gnqkl92yp46
-TWITCH_ACCESS_TOKEN=k43a6zrt9375qtd64hgpblxvjters1
 
 # Project configs
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
