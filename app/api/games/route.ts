@@ -7,8 +7,8 @@ export async function GET(){
     const response = await fetch('https://api.igdb.com/v4/games',{
         method: "POST",
         headers:{
-            "Client-ID": process.env.IGDB_CLIENT_ID || "",
-            Authorization: `Bearer ${process.env.TOKEN || ""}`,
+            "Client-ID": process.env.TWITCH_CLIENT_ID || "",
+            Authorization: `Bearer ${process.env.TWITCH_ACCESS_TOKEN || ""}`,
             "Accept":"application/json",
         },
         body:`

@@ -55,11 +55,11 @@ export default function MostPopular({windowSize}: MostPopularprops){
                if(Array.isArray(res)){
                    setPopularGames(res)
                 } else{
-                    console.error('error on API response: ', res)
+                    console.log('error on API response: ', res)
                     setPopularGames([])
                 }
             } catch(error){
-                console.error ("error to load the games: ", res)
+                console.log ("error to load the games: ", res)
                 setPopularGames([])
             }
         }
@@ -84,7 +84,7 @@ export default function MostPopular({windowSize}: MostPopularprops){
         <Swiper
             slidesPerView={calculate(windowSize)}
             spaceBetween={30} loop={true}
-            autoplay={{ delay: 3500, disableOnInteraction: false,}} modules={[Autoplay]}
+            // autoplay={{ delay: 3500, disableOnInteraction: false,}} modules={[Autoplay]}
             className={`mySwiper w-full h-full hidden`}>
             
             {popularGames.map((value,index)=>(
@@ -103,6 +103,7 @@ export default function MostPopular({windowSize}: MostPopularprops){
                     <p className={`${OpenSans.className} text-[1em]`}>{value.name}</p>
                 </div>
             </SwiperSlide>
+
             ))}
         </Swiper>
         </div>
