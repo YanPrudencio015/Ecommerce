@@ -132,6 +132,78 @@ export default function SlideMainGames({windowSize}: MostPopularprops){
                     </SwiperSlide>
                 ))}
             </Swiper>
+            <Swiper
+                slidesPerView={calculate(windowSize)}
+                spaceBetween={10} loop={true}
+                className={`mySwiper w-full h-full hidden my-5`}
+            >
+                {gameCollections[1]?.map((value:any,index:number)=>(
+                    <SwiperSlide key={index} className={`rounded-0 hidden 
+                        relative z-20 group overflow-hidden transition-all duration-100 ease-in-out
+                        cursor-pointer 
+                        `}>
+                        <Image 
+                            src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`} 
+                            alt="game image name" width={500} height={1500} 
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className=" object-fill absolute
+                            w-[100%] h-[100%] rounded-0 brightness-90 group-hover:brightness-110
+                            scale-100 group-hover:scale-110
+                            transition-all duration-1000 ease-in-out "/>
+                        <div className="w-full h-[3em] background:rgba(0, 0, 0, 0.3)
+                             
+                            shadow-lg  backdrop-blur-[7.7px] absolute
+                            bottom-0 z-10 flex justify-around items-center flex-col text-center">
+                            <p className={`${lato.className} text-[.6em]`}>{value.name}</p>
+                            <div className="w-full h-[2em] flex justify-around items-center">
+                                <p className={` ${fredoka.className} w-[4em] rounded-[2em]
+                                    `}>$55.99</p>
+                                <div className="flex justify-around h-full w-[3.5em] items-center">
+                                    <HeartIcon className="size-5 rounded-[5em] "/>
+                                    <ShoppingBagIcon className="size-5 rounded-[5em]"/>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+            <Swiper
+                slidesPerView={calculate(windowSize)}
+                spaceBetween={10} loop={true}
+                className={`mySwiper w-full h-full hidden my-5`}
+            >
+                {gameCollections[2]?.map((value:any,index:number)=>(
+                    <SwiperSlide key={index} className={`rounded-0 hidden 
+                        relative z-20 group overflow-hidden transition-all duration-100 ease-in-out
+                        cursor-pointer 
+                        `}>
+                        <Image 
+                            src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`} 
+                            alt="game image name" width={500} height={1500} 
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className=" object-fill absolute
+                            w-[100%] h-[100%] rounded-0 brightness-90 group-hover:brightness-110
+                            scale-100 group-hover:scale-110
+                            transition-all duration-1000 ease-in-out "/>
+                        <div className="w-full h-[3em] background:rgba(0, 0, 0, 0.3)
+                             
+                            shadow-lg  backdrop-blur-[7.7px] absolute
+                            bottom-0 z-10 flex justify-around items-center flex-col text-center">
+                            <p className={`${lato.className} text-[.6em]`}>{value.name}</p>
+                            <div className="w-full h-[2em] flex justify-around items-center">
+                                <p className={` ${fredoka.className} w-[4em] rounded-[2em]
+                                    `}>$55.99</p>
+                                <div className="flex justify-around h-full w-[3.5em] items-center">
+                                    <HeartIcon className="size-5 rounded-[5em] "/>
+                                    <ShoppingBagIcon className="size-5 rounded-[5em]"/>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </SwiperSlide>
+                ))}
+            </Swiper>
 
 
 
