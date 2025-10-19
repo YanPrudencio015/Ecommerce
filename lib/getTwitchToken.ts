@@ -2,7 +2,6 @@ let cachedToken: string | null = null;
 let tokenExpiration: number | null = null;
 
 export async function getTwitchToken() {
-  // Se o token ainda é válido, usa o cache
   if (cachedToken && tokenExpiration && Date.now() < tokenExpiration) {
     return cachedToken;
   }

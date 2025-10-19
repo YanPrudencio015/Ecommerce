@@ -7,6 +7,7 @@ import Image from "next/image";
 
 
 import imageTest from '@/public/GameImages/game3.jpg'
+import MainSidebar from "../sidebars/mainSidebar/MainSidebar";
 export default function Body(){
 
     const {isOpen,toggleSidebar} = UseSidebar();
@@ -18,7 +19,6 @@ export default function Body(){
             'md:w-[91%] md:left-[4em] duration-300  lg:w-[95.2%] lg:left-[4em]'}`}>
                 <HeroSection/>
                 <Slides/>
-
                 <div className="
                     m-3.5 border border-[#fff] w-[18em] h-[16em] rounded-t-[.5em]
                     rounded-[0em] text-[#fff] shadow-lg/30 
@@ -30,6 +30,7 @@ export default function Body(){
 
                         </div>
                     </div>
+
         </div>
     )
 }

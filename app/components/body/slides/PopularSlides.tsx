@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 
 // fonts
-import { Orbitron, Roboto, Inter, Russo_One, Audiowide,  Open_Sans, Fredoka, Baloo_2, Nunito,  Bebas_Neue, Montserrat, Lato,} from "next/font/google";
+import { Orbitron, Roboto, Inter, Russo_One, Audiowide,  Open_Sans, Fredoka, Baloo_2, Nunito,  Bebas_Neue, Montserrat, Lato, Yesteryear,} from "next/font/google";
 
 // images
 import Image from "next/image";
@@ -44,12 +44,16 @@ export default function MostPopular({windowSize}: MostPopularprops){
     const[popularGames, setPopularGames] = useState<any[]>([])
 
 
+    // get the currencly date 
+
+
+
+
     useEffect(()=>{
         async function loagames(){
-            const data = await fetch('api/games');
+            const data = await fetch('api/games?type=popular');
             const res = await data.json()
             setPopularGames(res)
-           
            try{
 
                if(Array.isArray(res)){
@@ -67,6 +71,11 @@ export default function MostPopular({windowSize}: MostPopularprops){
     },[])
 
 
+    useEffect(()=>{
+        console.log("Music: ",popularGames)
+    },[popularGames])
+
+
 
     function calculate(value:number):number{
         if(value <= 500) return 1
@@ -78,29 +87,36 @@ export default function MostPopular({windowSize}: MostPopularprops){
 
     return(
         <div className="w-full h-[25em] sm:h-[20em] bg-[#151515] flex justify-center 
-        items-center flex-col sm:justify-start sm:items-start
+        items-center flex-col sm:justify-start sm:items-start lg:h-[25em]
             text-[#fff] gap-1.5">
-                <h1 className={`${montserrat.className} text-[1.5em] `}>Must Popular Games</h1>
+                <h1 className={`${montserrat.className} text-[1.5em] border-l-4
+                border-[#068FFF]
+                `}>Must Popular Games</h1>
         <Swiper
             slidesPerView={calculate(windowSize)}
             spaceBetween={30} loop={true}
-            // autoplay={{ delay: 3500, disableOnInteraction: false,}} modules={[Autoplay]}
+            autoplay={{ delay: 2000, disableOnInteraction: false,}} modules={[Autoplay]}
             className={`mySwiper w-full h-full hidden`}>
             
             {popularGames.map((value,index)=>(
-            <SwiperSlide key={index} className={` relative rounded-[1em] !flex 
-                justify-center items-center flex-col `}>
-                <div className=" w-[60%] sm:w-[75%] h-[80%] sm:h-[80%] relative 
-                    ">
-                    <Image 
-                        src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`} 
-                        alt="game image name" width={900} height={900} 
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className=" object-fill rounded-[1em] rounded-b-[0em] sm:rounded-[0em]
-                        w-[100%] h-[100%]"/>
-                </div>
-                <div className="w-[60%] sm:w-full flex justify-center items-center text-center">
-                    <p className={`${OpenSans.className} text-[1em]`}>{value.name}</p>
+            <SwiperSlide key={index} className={` !flex justify-center items-center`}>
+                <div className="w-[70%] h-[90%] bg-[#151515] rounded-[16px]
+                    border border-[#fff] flex justify-between items-center flex-col pb-5 pt-2
+                    sm:h-[80%] sm:pt-0 sm:border-0 lg:w-[90%] lg:h-[90%]
+                    
+                ">
+                    <div className=" w-[95%] h-[14em] sm:h-[9em] sm:w-[100%] sm:rounded-[2em]
+                        lg:h-[15em] lg:w[80%]">
+                     <Image 
+                         src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`} 
+                         alt="game image name" width={500} height={1500} 
+                         sizes="(max-width: 768px) 100vw, 50vw"
+                         className=" object-fill rounded-[1em] rounded-b-[.5em] sm:rounded-[.2em]
+                            w-[100%] h-[100%] lg:border-[#fff] lg:border-2 lg:rounded-[.9em] "/>
+                    </div>
+                    <p className={`${OpenSans.className} 
+                      w-full flex justify-center
+                      text-[1em] items-center text-center`}>{value.name}</p>
                 </div>
             </SwiperSlide>
 
