@@ -9,10 +9,6 @@ export async function GET(request:Request) {
 
 
     // get the todays' date and from it, get a previous date 
-
-
-
-
      let body = '';
 
      const today = ()=>{
@@ -25,6 +21,8 @@ export async function GET(request:Request) {
       return Math.floor(monthsAgo.setMonth(monthsAgo.getMonth() - value) / 1000)
      }
 
+
+     
      if(type === "popular"){
       body =`fields name, artworks.url, cover.url, first_release_date, summary, 
               total_rating, rating, rating_count, genres.name, platforms.name, videos.video_id;

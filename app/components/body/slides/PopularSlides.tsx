@@ -43,16 +43,12 @@ export default function MostPopular({windowSize}: MostPopularprops){
 
     const[popularGames, setPopularGames] = useState<any[]>([])
 
-
     // get the currencly date 
-
-
-
 
     useEffect(()=>{
         async function loagames(){
             const data = await fetch('api/games?type=popular');
-            const res = await data.json()
+            const res = await data.json()           
             setPopularGames(res)
            try{
 
@@ -71,12 +67,6 @@ export default function MostPopular({windowSize}: MostPopularprops){
     },[])
 
 
-    useEffect(()=>{
-        console.log("Music: ",popularGames)
-    },[popularGames])
-
-
-
     function calculate(value:number):number{
         if(value <= 500) return 1
         if(value <= 640) return 2
@@ -87,42 +77,46 @@ export default function MostPopular({windowSize}: MostPopularprops){
 
     return(
         <div className="w-full h-[25em] sm:h-[20em] bg-[#151515] flex justify-center 
-        items-center flex-col sm:justify-start sm:items-start lg:h-[25em]
+        items-center flex-col sm:justify-start sm:items-start lg:h-[20em]
             text-[#fff] gap-1.5">
-                <h1 className={`${montserrat.className} text-[1.5em] border-l-4
-                border-[#068FFF]
+                <h1 className={`${montserrat.className} text-[1.5em] w-full pl-3 relative 
+                before:h-full before:w-[5px] before:bg-[#0BA6DF] before:absolute before:left-0
+                before:rounded-[1em]
                 `}>Must Popular Games</h1>
         <Swiper
             slidesPerView={calculate(windowSize)}
             spaceBetween={30} loop={true}
             autoplay={{ delay: 2000, disableOnInteraction: false,}} modules={[Autoplay]}
             className={`mySwiper w-full h-full hidden`}>
-            
             {popularGames.map((value,index)=>(
-            <SwiperSlide key={index} className={` !flex justify-center items-center`}>
-                <div className="w-[70%] h-[90%] bg-[#151515] rounded-[16px]
-                    border border-[#fff] flex justify-between items-center flex-col pb-5 pt-2
-                    sm:h-[80%] sm:pt-0 sm:border-0 lg:w-[90%] lg:h-[90%]
-                    
-                ">
-                    <div className=" w-[95%] h-[14em] sm:h-[9em] sm:w-[100%] sm:rounded-[2em]
-                        lg:h-[15em] lg:w[80%]">
-                     <Image 
-                         src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`} 
-                         alt="game image name" width={500} height={1500} 
-                         sizes="(max-width: 768px) 100vw, 50vw"
-                         className=" object-fill rounded-[1em] rounded-b-[.5em] sm:rounded-[.2em]
-                            w-[100%] h-[100%] lg:border-[#fff] lg:border-2 lg:rounded-[.9em] "/>
+                <SwiperSlide key={index} className={` !flex justify-center items-center`}>
+                    <div className="p-[1px] bg-gradient-to-r from-[#0A97B0] to-[#0A5EB0]
+                        w-[75%] h-[90%] rounded-lg flex justify-center items-center cursor-pointer
+                        blur-[#151515]">
+                        <div className="w-[99%] h-[99%] rounded-lg bg-[#111] relative z-0">
+                            <div className="absolute w-full h-full bg-[rgba(0,0,0,.3)] 
+                            lg:bg-[rgba(0,0,0,.4)] lg:hover:bg-[rgba(0,0,0,.1)] z-20
+                            transition-all duration-300 ease-in"></div>
+                        <Image 
+                            src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`}  
+                            alt="game image name" width={500} height={1500} 
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className=" object-fill  w-[100%] h-[100%] rounded-lg absolute z-10 "/>
+                        <div className="absolute z-50 bottom-0 w-full h-[45%] bg-gradient-to-t 
+                            from-[#0BA6DF]/90 to-transparent"></div>
+                        <p className={`absolute bottom-4 left-1/2 -translate-x-1/2 z-60 text-white 
+                            text-center font-semibold text-lg 
+                            drop-shadow-lg w-full
+                            ${bebasNeue.className}
+                            `}>{value.name}</p>
+                        </div>
                     </div>
-                    <p className={`${OpenSans.className} 
-                      w-full flex justify-center
-                      text-[1em] items-center text-center`}>{value.name}</p>
-                </div>
-            </SwiperSlide>
-
+                </SwiperSlide>
             ))}
         </Swiper>
+
         </div>
+
     )
 }
 
