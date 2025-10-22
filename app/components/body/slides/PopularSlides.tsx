@@ -90,13 +90,13 @@ export default function MostPopular({windowSize}: MostPopularprops){
             className={`mySwiper w-full h-full hidden`}>
             {popularGames.map((value,index)=>(
                 <SwiperSlide key={index} className={` !flex justify-center items-center`}>
-                    <div className="p-[1px] bg-gradient-to-r from-[#0A97B0] to-[#0A5EB0]
-                        w-[75%] h-[90%] rounded-lg flex justify-center items-center cursor-pointer
+                    <div className="p-[1px] bg-gradient-to-r from-[#068FFF] to-[#0A5EB0]
+                        w-[65%] h-[80%] rounded-lg flex justify-center items-center cursor-pointer
                         blur-[#151515]">
                         <div className="w-[99%] h-[99%] rounded-lg bg-[#111] relative z-0">
                             <div className="absolute w-full h-full bg-[rgba(0,0,0,.3)] 
                             lg:bg-[rgba(0,0,0,.4)] lg:hover:bg-[rgba(0,0,0,.1)] z-20
-                            transition-all duration-300 ease-in"></div>
+                            transition-all duration-300 ease-in rounded-lg"></div>
                         <Image 
                             src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`}  
                             alt="game image name" width={500} height={1500} 
