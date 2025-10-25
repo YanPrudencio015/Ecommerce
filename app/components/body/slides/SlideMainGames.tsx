@@ -28,7 +28,7 @@ const fredoka = Fredoka({weight:"300", subsets:["latin"]});
 const baloo2 = Baloo_2({weight:"600", subsets:["latin"]});
 const nunito = Nunito({weight:"700", subsets:["latin"]});
 const bebasNeue = Bebas_Neue({weight:"400", subsets:["latin"]});
-const montserrat = Montserrat({weight:"800", subsets:["latin"]});
+const montserrat = Montserrat({weight:"300", subsets:["latin"]});
 const lato = Lato({weight:"400", subsets:["latin"]});
 
 type MostPopularprops ={
@@ -89,8 +89,6 @@ export default function SlideMainGames({windowSize}: MostPopularprops){
 
         const normalized:number = rating / 20;
         const routed:number = Math.round(normalized * 10) / 10;
-
-        console.log("internet: ", routed)
         return routed
     }
         
@@ -130,7 +128,7 @@ export default function SlideMainGames({windowSize}: MostPopularprops){
                                             {normalizeRating(value.rating) }
                                         </p>
                                     </div>
-                                    <span className={`${montserrat.className} w-[4em]  bg-[#068FFF] text-[.9em] font-bold 
+                                    <span className={`${montserrat.className} w-[4em]  bg-[#068FFF] text-[.9em] font-light 
                                     rounded-[.2em] flex justify-center items-center`}>$55.90</span>
                                 </div>
                             </div>
