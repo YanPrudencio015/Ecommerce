@@ -85,7 +85,7 @@ export default function MostPopular({windowSize}: MostPopularprops){
                 `}>Must Popular Games</h1>
         <Swiper
             slidesPerView={calculate(windowSize)}
-            spaceBetween={30} loop={true}
+            spaceBetween={5} loop={true}
             autoplay={{ delay: 2000, disableOnInteraction: false,}} modules={[Autoplay]}
             className={`mySwiper w-full h-full hidden`}>
             {popularGames.map((value,index)=>(

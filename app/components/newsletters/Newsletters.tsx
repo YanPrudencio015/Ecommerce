@@ -25,7 +25,8 @@ export default function Newsletters() {
     async function loaNews() {
       try {
         const newsAPI = await fetch("/api/news");
-        const data = await newsAPI.json()
+        const data = await newsAPI.json();
+        console.log(data)
         setNews(data.results)
 
       } catch (error) {
@@ -40,38 +41,39 @@ export default function Newsletters() {
 
 
   return (
-    <div className="w-[95%] h-auto bg-[#151515] flex flex-col justify-center items-center mb-16
+    <div className="w-[95%] h-[50em] bg-[#151515] flex flex-col justify-center items-center mb-16
         relative before:absolute before:top-0 before:h-[1px] before:w-[80%] before:bg-[#EEEEEE]
         before:left-1/2 before:-translate-x-1/2 after:absolute after:bottom-0 after:w-[80%] 
-        after:bg-[#EEEEEE] after:h-[1px]  after:left-1/2 after:-translate-x-1/2 gap-7">
+        after:bg-[#EEEEEE] after:h-[1px]  after:left-1/2 after:-translate-x-1/2 gap-2">
         <h1 className={`text-[3em] text-[#fff] w-full h-[4em] flex 
           justify-start items-center pl-2 ${bebasNeue.className}`}>Inside the Gaming World</h1>
-        <div className="w-full h-auto pt-3 flex flex-col gap-4 mb-16">
+        <div className="w-full h-[26em] overflow-hidden pt-3 flex flex-col gap-4 mb-16
+          sm:flex sm:flex-col sm:flex-wrap sm:justify-center sm:gap-1.5 ">
 
           {news?.map((value, index)=>(
             <div key={index} className=" relative  w-full h-[6em] flex flex-row
               justify-between p-2 gap-1 text-[#fff] items-center before:absolute
-               before:left-0 before:h-full before:w-[5px] before:bg-[#068FFF] before:rounded-2xl">
+               before:left-0 before:h-full before:w-[5px] before:bg-[#068FFF] sm:w-[50%] sm:h-[5.5em]
+               sm:items-center">
               <div className=" w-[70%] h-full flex flex-col justify-between
               items-center p-1.5 text-[.7em]">
-                <h1 className="w-full h-full flex justify-center
-              items-center">{value.title}</h1>
-                {/* <p>horas</p> */}
+                <h1 className={`w-full h-full flex justify-center
+              items-center ${montserrat.className}`}>{value.title}</h1>
               </div>
-            <div className=" w-[5em] h-[2em] flex justify-center items-center rounded-1xl">
+            <div className=" w-[4em] h-[2em] flex justify-center items-center rounded-1xl">
               <Image 
                 src={`${value.image}`}
                 alt=""
                 width={800}
                 height={800}
-                className="w-full h-[5em] object-fill rounded-1xl"/>
+                className="w-full h-full object-fill rounded-1xl"/>
             </div>
           </div>
-          ))}
-          
-          <button className="w-full h-[2em] text-[#fff] bg-[#9d14ff] relative rounded-4xl
-            "> See More</button>
+          ))}          
         </div>
+          <button className="w-full h-[2em] text-[#fff] bg-[#9d14ff] relative rounded-[.5em]
+          sm:w-1/2
+            "> See More</button>
     </div>
   );
 }
