@@ -42,16 +42,16 @@ export default function SlideMainGames({windowSize}: MostPopularprops){
      useEffect(()=>{
             async function loagames(){
                 const data = await fetch('api/games?type=main');
-                const res = await data.json()
+                const res = await data.json();
                setMainGames(res)
                try{
     
                    if(Array.isArray(res)){
                     } else{
-                        console.log('error on API response: ', res)
+                        console.log('error on API response: ', res);
                     }
                 } catch(error){
-                    console.log ("error to load the games: ", res)
+                    console.log ("error to load the games: ", res);
                 }
             }
              loagames()
@@ -59,11 +59,24 @@ export default function SlideMainGames({windowSize}: MostPopularprops){
 
 
 
+
+
+        useEffect(() => {
+  console.log("🔍 Maingames montado!");
+  return () => console.log("🧹 Maingames desmontado!");
+}, []);
+
+
+
+
+
+
+
     // separing arrays API in three subarrays
         useEffect(()=>{
         
             const nelementsArray = 7;
-            var GamesArray = []
+            var GamesArray = [];
 
 
             for(let i=0; i < mainGames.length; i += nelementsArray){
@@ -101,7 +114,7 @@ export default function SlideMainGames({windowSize}: MostPopularprops){
             <div className=" w-full h-[13em] lg:h-[60em] p-2">
                 <Swiper
                     slidesPerView={calculate(windowSize)}
-                    spaceBetween={10} loop={true}
+                    spaceBetween={10} loop={gameCollections.length > calculate(windowSize)}
                     className={`mySwiper w-full h-full hidden my-5 sm:my-7 lg:my-16 lg:h-[15em] `}
                 >
                     {gameCollections[0]?.map((value:any,index:number)=>(

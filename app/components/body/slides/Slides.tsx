@@ -5,6 +5,11 @@ import React, { useEffect, useState } from "react";
 import MostPopular from "./PopularSlides";
 import SlideMainGames from "./SlideMainGames";
 
+// components
+import Newsletters from "../../newsletters/Newsletters";
+import OthersGames from "./OthersGames";
+
+
 export default function Slides(){
     const [windowSize, setWindowSize] = useState<number|null>(null)
 
@@ -22,16 +27,17 @@ export default function Slides(){
     },[])
 
 
+    useEffect(() => {
+  console.log("🔍 Slides montado!");
+  return () => console.log("🧹 Slides desmontado!");
+}, []);
+
     return(
         <div className="w-full h-full ">
-            {/* slides will be here
-            1. Most popular - played
-            2. Principais novidades - Top New Releases
-            3. about your choices (if the user once bouth something)
-            4. main games of the main companies 
-            5. categories */}
             {windowSize !== null && <MostPopular windowSize={windowSize} />}
             {windowSize !== null && <SlideMainGames windowSize={windowSize} />}
+            <Newsletters/>
+            {windowSize !== null && <OthersGames windowSize={windowSize} />}
         </div>
     )
 }

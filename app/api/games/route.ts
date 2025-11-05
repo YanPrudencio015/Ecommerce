@@ -35,12 +35,95 @@ export async function GET(request:Request) {
       body = `fields name, artworks.url, cover.url, first_release_date, summary, 
               total_rating, rating, rating_count, genres.name, platforms.name, videos.video_id;
             sort total_rating desc;
-            where total_rating >= 60 & rating_count > 100 & first_release_date >= ${MonthsAgo(36)} &
+            where total_rating !=null & rating_count > 100 & first_release_date >= ${MonthsAgo(36)} &
             first_release_date <= ${today()} & platforms != null &
                platforms = (6, 48, 49, 167, 169);
             limit 21;`
-     }
-
+     } else if(type === "racing"){
+            body = `
+                fields name, artworks.url, cover.url, first_release_date, summary, 
+                      total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
+                        themes.name, 
+                       videos.video_id;
+                sort total_rating desc;
+                where total_rating >= 40 
+                  & rating_count > 100 &
+                  game_modes = (1, 2) &
+                  themes != (1, 20, 22, 27)
+                  & platforms != null 
+                  & platforms = (6, 48, 49, 167, 169)
+                     & genres = (10);
+                limit 60;
+              `;  
+           } else if(type === "sport"){
+            body = `
+                fields name, artworks.url, cover.url, first_release_date, summary, 
+                      total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
+                        themes.name, 
+                       videos.video_id;
+                sort total_rating desc;
+                where total_rating != null 
+                  & rating_count > 100 &
+                  game_modes = (1, 2) &
+                  themes != (1, 20, 22, 27)
+                  & platforms != null 
+                  & platforms = (6, 48, 49, 167, 169)
+                     & genres = (14);
+                limit 60;
+              `;  
+           } 
+            else if(type === "shooter"){
+            body = `
+                fields name, artworks.url, cover.url, first_release_date, summary, 
+                      total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
+                        themes.name, 
+                       videos.video_id;
+                sort total_rating desc;
+                where total_rating >= 50
+                  & rating_count > 80 &
+                  game_modes = (1, 2) &
+                  themes != (1, 20, 22, 27)
+                  & platforms != null 
+                  & platforms = (6, 48, 49, 167, 169)
+                     & genres = (5);
+                limit 60;
+              `;  
+           } 
+          
+            else if(type === "fight"){
+            body = `
+                fields name, artworks.url, cover.url, first_release_date, summary, 
+                      total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
+                        themes.name, 
+                       videos.video_id;
+                sort total_rating desc;
+                where total_rating >= 40 
+                  & rating_count > 10 &
+                  game_modes = (1, 2) &
+                  themes != (1, 20, 22, 27)
+                  & platforms != null 
+                  & platforms = (6, 48, 49, 167, 169)
+                     & genres = (4);
+                limit 60;
+              `;  
+           } 
+            else if(type === "adventure"){
+            body = `
+                fields name, artworks.url, cover.url, first_release_date, summary, 
+                      total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
+                        themes.name, 
+                       videos.video_id;
+                sort total_rating desc;
+                where total_rating >= 40 
+                  & rating_count > 100 &
+                  game_modes = (1, 2) &
+                  themes != (1, 20, 22, 27)
+                  & platforms != null 
+                  & platforms = (6, 48, 49, 167, 169)
+                     & genres = (31);
+                limit 60;
+              `;  
+           } 
   try {
     const token = await getTwitchToken();
 

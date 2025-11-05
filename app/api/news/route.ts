@@ -13,7 +13,6 @@ const url = `https://api.apitube.io/v1/news/everything?api_key=${process.env.API
     if(!response.ok) throw new Error(`error on API menssage: , ${response.status}`);
 
     const data = await response.json();
-    console.log("Data from API: ", data);
     return  NextResponse.json(data)
 
 }catch(error:any){

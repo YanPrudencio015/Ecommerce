@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { UseSidebar } from "@/app/contexts/SidebarContext";
 import HeroSection from "../heroSection/Hero";
 import Slides from "./slides/Slides";
-import Newsletters from "../newsletters/Newsletters";
 import Image from "next/image";
 
 
@@ -20,7 +19,6 @@ export default function Body(){
             'md:w-[91%] md:left-[4em] duration-300  lg:w-[95.2%] lg:left-[4em]'}`}>
                 <HeroSection/>
                 <Slides/>
-                <Newsletters/>
         </div>
     )
 }

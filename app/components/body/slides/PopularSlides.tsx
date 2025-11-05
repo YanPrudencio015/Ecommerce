@@ -67,6 +67,15 @@ export default function MostPopular({windowSize}: MostPopularprops){
     },[])
 
 
+
+
+
+    useEffect(() => {
+  console.log("🔍 Populargames montado!");
+  return () => console.log("🧹 Populargames desmontado!");
+}, []);
+
+
     function calculate(value:number):number{
         if(value <= 500) return 1
         if(value <= 640) return 2
@@ -85,7 +94,7 @@ export default function MostPopular({windowSize}: MostPopularprops){
                 `}>Must Popular Games</h1>
         <Swiper
             slidesPerView={calculate(windowSize)}
-            spaceBetween={5} loop={true}
+            spaceBetween={5} loop={popularGames.length > calculate(windowSize)}
             autoplay={{ delay: 2000, disableOnInteraction: false,}} modules={[Autoplay]}
             className={`mySwiper w-full h-full hidden`}>
             {popularGames.map((value,index)=>(
@@ -99,7 +108,7 @@ export default function MostPopular({windowSize}: MostPopularprops){
                             transition-all duration-300 ease-in rounded-lg"></div>
                         <Image 
                             src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`}  
-                            alt="game image name" width={500} height={1500} 
+                            alt={value.name} width={500} height={1500} 
                             sizes="(max-width: 768px) 100vw, 50vw"
                             className=" object-fill  w-[100%] h-[100%] rounded-lg absolute z-10 "/>
                         <div className="absolute z-50 bottom-0 w-full h-[45%] bg-gradient-to-t 
