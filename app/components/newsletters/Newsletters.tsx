@@ -48,20 +48,6 @@ export default function Newsletters() {
 
 
 
-    useEffect(()=>{
-      let allImagesWithURL: any[] = [];
-      let without: any[] = [];
-      
-  news?.forEach((value) => {
-    if (value.image?.startsWith("https://")) {
-      allImagesWithURL.push(value);
-    } else {
-      without.push(value);
-    }
-  });
-
-      },[news])
-
   return (
     <div className="w-[95%] h-[50em] bg-[#151515] flex flex-col justify-center items-center mb-16
         relative before:absolute before:top-0 before:h-[1px] before:w-[80%] before:bg-[#EEEEEE]

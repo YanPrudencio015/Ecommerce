@@ -52,37 +52,6 @@ export default function OthersGames({windowSize}: MostPopularprops){
     const [FightGames, setFightGames] = useState<any[]>([]);
     const[SportsGame, setSportsGames] = useState<any[]>([]);
 
-    // const[gamesCategories, setGamesCategories] = useState<any[]>([]);
-    // get the currencly date 
-
-
-
-    // useEffect(()=>{
-    //     async function LoaGames(){
-
-    //         const data = await fetch('api/games?type=racing')
-    //         const response = await data.json();
-    //         setRacingames([...response.slice(0,5)])
-            
-    //         const dataAdventure = await fetch('api/games?type=adventure');
-    //         const responseAdventure = await dataAdventure.json();
-    //         setAdventureGames([...responseAdventure.slice(0,5)]);
-
-    //         const dataShooter = await fetch("api/games?type=shooter");
-    //         const responseShooter = await dataShooter.json();
-    //         setShooterGames([...responseShooter.slice(0,5)]); 
- 
-    //         const dataFight = await fetch("api/games?type=fight");
-    //         const responseFight = await dataFight.json();
-    //         setFightGames([...responseFight.slice(0,5)]); 
-
-    //         const dataSport = await fetch("api/games?type=sport");
-    //         const responseSport = await dataSport.json();
-    //         setSportsGames([...responseSport.slice(0,5)]); 
-    //     }
-
-    //     LoaGames();
-    // },[])
 
     interface GameCategories {
         url: string,
