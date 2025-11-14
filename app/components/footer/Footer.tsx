@@ -1,14 +1,37 @@
     "use client"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFacebook } from "@fortawesome/free-brands-svg-icons"
-import { faInstagram } from "@fortawesome/free-brands-svg-icons"
-import { faXTwitter } from "@fortawesome/free-brands-svg-icons"
+    import { Geist, Geist_Mono, Orbitron, Roboto, Inter, Russo_One, Audiowide,  Open_Sans, Fredoka, Baloo_2, Nunito,  Bebas_Neue, Montserrat, Lato,} from "next/font/google";
 
 
-import {Orbitron} from "next/font/google"
+
+    // components
+    import Socials from "./Socials";
+import Support from "./Support";
+import Account from "./Account";
+import Legal from "./Legal";
+import Payment from "./Payment";
 
 const orbitron = Orbitron({weight:"400", subsets:["latin"]});
+const roboto = Roboto({weight:"400", subsets:["latin"]});
+const inter = Inter({weight:"400", subsets:["latin"]});
+const russoOne = Russo_One ({weight:"400", subsets:["latin"]});
+const audioWise = Audiowide({weight:"400", subsets:["latin"]});
+const OpenSans = Open_Sans({weight:"400", subsets:["latin"]})
+const fredoka = Fredoka({weight:"400", subsets:["latin"]});
+const baloo2 = Baloo_2({weight:"600", subsets:["latin"]});
+const nunito = Nunito({weight:"700", subsets:["latin"]});
+const bebasNeue = Bebas_Neue({weight:"400", subsets:["latin"]});
+const montserrat = Montserrat({weight:"400", subsets:["latin"]});
+const lato = Lato({weight:"400", subsets:["latin"]});
 export default function Footer(){
+
+    const options: string[] = [
+        "Help Center",
+        "Contact Support",
+        "Refund Policy",
+        "Warranty Information",
+        "Troubleshooting"
+    ];
+
 
     return(
         <div className="text-[#fff] w-full h-auto flex items-center justify-around
@@ -18,44 +41,16 @@ export default function Footer(){
             text-[1.5em] text-[#fff]`}>
                 Level Up                
             </p>
-            <div className="w-full h-[5em] flex justify-evenly flex-row">
-                <div className="rounded-full w-[3em] h-[3em] bg-gradient-to-bl from-[#068FFF]
-                    to-[#FF9A00] p-0.5 hover:p-0 hover:bg-[#151515] transition-all duration-300
-                        ease-in-out group">
-                    <div className="rounded-full w-full h-full bg-[#151515] overflow-hidden
-                    flex justify-center items-center relative before:absolute before:top-1/2 
-                    before:left-1/2 before:z-0 before:bg-[#151515] before:w-[.5em] before:h-[.5em]
-                    before:-translate-y-1/2 before:-translate-x-1/2 before:content-[''] 
-                    before:rounded-full group-hover:before:w-[5em] group-hover:before:h-[5em]
-                    before:transition-all before:duration-500 group-hover:before:bg-[#068FFF] ">
-                    <FontAwesomeIcon icon={faFacebook} className="text-[1.5em] z-10"/>
-                    </div>
-                </div>
-                <div className="rounded-full w-[3em] h-[3em] bg-gradient-to-bl from-[#068FFF]
-                    to-[#FF9A00] p-0.5 hover:p-0 hover:bg-[#151515] transition-all duration-300
-                        ease-in-out group">
-                    <div className="rounded-full w-full h-full bg-[#151515] overflow-hidden
-                    flex justify-center items-center relative before:absolute before:top-1/2 
-                    before:left-1/2 before:z-0 before:bg-[#151515] before:w-[.5em] before:h-[.5em]
-                    before:-translate-y-1/2 before:-translate-x-1/2 before:content-[''] 
-                    before:rounded-full group-hover:before:w-[5em] group-hover:before:h-[5em]
-                    before:transition-all before:duration-500 group-hover:before:bg-[#068FFF] ">
-                    <FontAwesomeIcon icon={faInstagram} className="text-[1.5em] z-10"/>
-                    </div>
-                </div>
-                <div className="rounded-full w-[3em] h-[3em] bg-gradient-to-bl from-[#068FFF]
-                    to-[#FF9A00] p-0.5 hover:p-0 hover:bg-[#151515] transition-all duration-300
-                        ease-in-out group">
-                    <div className="rounded-full w-full h-full bg-[#151515] overflow-hidden
-                    flex justify-center items-center relative before:absolute before:top-1/2 
-                    before:left-1/2 before:z-0 before:bg-[#151515] before:w-[.5em] before:h-[.5em]
-                    before:-translate-y-1/2 before:-translate-x-1/2 before:content-[''] 
-                    before:rounded-full group-hover:before:w-[5em] group-hover:before:h-[5em]
-                    before:transition-all before:duration-500 group-hover:before:bg-[#068FFF] ">
-                    <FontAwesomeIcon icon={faXTwitter} className="text-[1.5em] z-10"/>
-                    </div>
-                </div>
-            </div>
+            <Socials/>
+            <Support/>
+            <Account/>
+            <Legal/>
+            <Payment/>
+            <p className="w-full h-full flex justify-center items-center text-center
+            ">© 2025 GameStore. All rights reserved.
+                All trademarks and game logos are the property of their respective owners.
+                Prices and availability are subject to change without notice.
+            </p>
         </div>
     )
 }
