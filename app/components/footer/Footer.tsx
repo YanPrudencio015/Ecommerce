@@ -24,15 +24,6 @@ const montserrat = Montserrat({weight:"400", subsets:["latin"]});
 const lato = Lato({weight:"400", subsets:["latin"]});
 export default function Footer(){
 
-    const options: string[] = [
-        "Help Center",
-        "Contact Support",
-        "Refund Policy",
-        "Warranty Information",
-        "Troubleshooting"
-    ];
-
-
     return(
         <div className="text-[#fff] w-full h-auto flex items-center justify-around
             flex-col gap-20 relative before:absolute before:top-0 before:right-1/2 
@@ -41,12 +32,14 @@ export default function Footer(){
             text-[1.5em] text-[#fff]`}>
                 Level Up                
             </p>
-            <Socials/>
-            <Support/>
-            <Account/>
-            <Legal/>
-            <Payment/>
-            <p className="w-full h-full flex justify-center items-center text-center
+            <div className="w-full h-auto flex justify-between flex-col  items-center gap-[5em]">
+                <Support/>
+                <Account/>
+                <Legal/>
+                <Socials/>
+                <Payment/>
+            </div>
+            <p className="w-[90%] h-full flex justify-center items-center text-center
             ">© 2025 GameStore. All rights reserved.
                 All trademarks and game logos are the property of their respective owners.
                 Prices and availability are subject to change without notice.
