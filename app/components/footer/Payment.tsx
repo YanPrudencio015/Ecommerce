@@ -44,7 +44,7 @@ export default function Payment(){
 
     return(
     <div className="w-full h-auto flex justify-between flex-col items-center
-            gap-10">
+            gap-10 lg:w-[25em]">
                 <p className={`${bebasNeue.className} text-[2em]`}>Payment Methods</p>
                 <div className="w-full h-[5em] flex justify-evenly flex-row">
                     {PaymentIcon.map((value, index)=>(
@@ -55,11 +55,12 @@ export default function Payment(){
                                 flex justify-center items-center relative before:absolute before:top-1/2 
                                 before:left-1/2 before:z-0 before:bg-[#151515] before:w-[.5em] before:h-[.5em]
                                 before:-translate-y-1/2 before:-translate-x-1/2 before:content-[''] 
-                                before:rounded-full group-hover:before:w-[5em] group-hover:before:h-[5em]
+                                before:rounded-full group-hover:before:w-[50em] group-hover:before:h-[50em]
                                 before:transition-all before:duration-500
                                 group-hover:before:bg-[#0046FF] focus:before:bg-[#0046FF]
-                                focus:before:h-[5em] focus:before:w-[5em] border-0 
-                                focus:border-1 border-[#fff]">
+                                focus:before:h-[50em] focus:before:w-[50em] border-0 
+                                focus:border-1 border-[#fff] cursor-pointer
+                                ">
                                 {value}
                             </button>
                         </div>

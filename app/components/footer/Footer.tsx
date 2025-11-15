@@ -27,12 +27,13 @@ export default function Footer(){
     return(
         <div className="text-[#fff] w-full h-auto flex items-center justify-around
             flex-col gap-20 relative before:absolute before:top-0 before:right-1/2 
-            before:translate-x-1/2 before:w-[90%] before:h-[1px] before:bg-[#fff] pt-5">
+            before:translate-x-1/2 before:w-[90%] before:h-[1px] before:bg-[#fff] pt-5 bg-[#0F0E0E]">
             <p className={`w-full h-[1.5em] flex justify-center ${orbitron.className}
             text-[1.5em] text-[#fff]`}>
                 Level Up                
             </p>
-            <div className="w-full h-auto flex justify-between flex-col  items-center gap-[5em]">
+            <div className="w-full h-auto flex justify-between flex-col items-center gap-[5em] 
+            sm:gap-[1em] sm:flex-row sm:flex-wrap">
                 <Support/>
                 <Account/>
                 <Legal/>

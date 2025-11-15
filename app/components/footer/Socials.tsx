@@ -18,9 +18,10 @@ export default function Socials(){
     ];
 
     return(
-        <div className="w-full flex justify-between">
+        <div className="w-full flex justify-between sm:w-[20em] sm:h-[20em] lg:h-[5em]  
+        lg:w-[15em] flex-col  lg:gap-1.5 items-center">
                        <div className="w-full h-[5em] flex justify-evenly items-center flex-row 
-                       ">
+                        sm:h-full lg:w-[10em] lg:flex-wrap lg:flex-row">
                     {socialsIcons.map((value, index)=>(
                         <div key={index} className="rounded-full w-[3em] h-[3em] bg-gradient-to-bl from-[#068FFF]
                         to-[#151515] p-0.5 hover:p-0 hover:bg-[#151515] transition-all duration-300
@@ -32,7 +33,8 @@ export default function Socials(){
                                 before:rounded-full group-hover:before:w-[5em] group-hover:before:h-[5em]
                                 before:transition-all before:duration-500 
                                 group-hover:before:bg-[#0046FF] focus:before:bg-[#0046FF]
-                                focus:before:h-[5em] focus:before:w-[5em] border-0">
+                                focus:before:h-[5em] focus:before:w-[5em] border-0 cursor-pointer
+                                ">
                                 {value}
                             </button>
                         </div>

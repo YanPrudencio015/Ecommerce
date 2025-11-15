@@ -23,10 +23,10 @@ export default function Account(){
     ];
 
     return(
-    <div className="w-full h-auto flex justify-between flex-col items-center
-            gap-10">
+    <div className="w-full h-auto flex justify-between flex-col items-center gap-10 sm:w-[20em]
+    lg:gap-5 lg:w-[12em]">
                 <p className={`${bebasNeue.className} text-[2em]`}>Account</p>
-                <ul className="w-full flex justify-center items-center flex-col gap-5">
+                <ul className="w-full flex justify-center items-center flex-col gap-5 lg:gap-2">
                     {options.map((value, index)=>(
                         <li key={index} className={`${ montserrat.className} w-full h-[2em]`}>
                             <button className="w-full h-full flex justify-center items-center relative 
@@ -34,7 +34,7 @@ export default function Account(){
                                 before:translate-x-1/2 before:w-[0%] before:h-[1px] 
                                 before:bg-[#fff] hover:before:w-[50%] before:transition-all 
                                 before:duration-200
-                                focus:before:w-[50%]
+                                focus:before:w-[50%] cursor-pointer
                                 ">{value}</button>
                         </li>
                     ))}
