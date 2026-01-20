@@ -27,10 +27,10 @@ export default function MainSidebar() {
   const {isOpen, toggleSidebar} = UseSidebar();
 
   return (
-    <div className={` bg-[#151515] text-[#000] h-[100vh]  fixed top-[4em] 
+    <div className={` bg-[#151515] text-[#000] h-[100vh] fixed top-0 
       overflow-auto pb-[5em] scrollbar-hide z-50 transform transition-all ease-in-out duration-200
-      ${isOpen? 'w-[14em]' : 'w-[3.5em] md:w-[4em]'}`}
-    >
+      ${isOpen? 'w-[14em]' : 'w-[3.5em] md:w-[4em] z-20'}`}
+      >
         {/*sidebar Header  */}
           <HeaderMainSidebar/>
         {/* Sidebar Body */}

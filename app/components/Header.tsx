@@ -28,32 +28,18 @@ export default function Header(){
     const {isOpen, toggleSidebar} = UseSidebar();
 
     return(
-        <div className="bg-[#151515] fixed z-50 h-[4em] w-full flex justify-between items-center 
+        <div className="bg-[#151515] fixed z-[2000] h-[4em] w-full flex justify-between items-center 
             px-[3%] before:absolute before:bottom-0 before:left-[50%] before:translate-x-[-50%] 
             before:translate-y-[-50%] before:w-[70%] before:h-[1px] rounded-0">
 
                             {/* Menu bars button */}
-                        <button   className="
-                        lg:w-[7em]
-                        sm:duration-300
-                        ease-in
-                        cursor-pointer
-                        sm:relative
-                        sm:before:absolute
-                        sm:before:bottom-0
-                        sm:before:right-[100%]
-                        sm:hover:before:right-0
-                        sm:before:w-full
-                        sm:before:h-[1px]
-                        sm:before:bg-white
-                        sm:before:transition-all
-                        sm:overflow-hidden
-                        lg:rounded-[5px]
-                        sm:flex
-                        sm:justify-center
-                        sm:items-center
-                    " onClick={()=>{toggleSidebar()}}
-                    >
+                        <button   className=" lg:w-[7em] sm:duration-300 ease-in cursor-pointer 
+                            sm:relative sm:before:absolute sm:before:bottom-0 sm:before:right-[100%] 
+                            sm:hover:before:right-0 sm:before:w-full sm:before:h-[1px] 
+                            sm:before:bg-white sm:before:transition-all sm:overflow-hidden 
+                            lg:rounded-[5px] sm:flex sm:justify-center sm:items-center" 
+                            onClick={()=>{toggleSidebar()}}
+>
                             <Bars3BottomLeftIcon className="text-[#fff] 
                                 size-7
                                 lg:hidden

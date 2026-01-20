@@ -75,15 +75,15 @@ export async function GET(request:Request) {
             else if(type === "shooter"){
             body = `
                 fields name, artworks.url, cover.url, first_release_date, summary, 
-                      total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
-                        themes.name, 
-                       videos.video_id;
+                total_rating, rating, rating_count, genres.name, platforms.name,game_modes.name,
+                themes.name, 
+                videos.video_id;
                 sort total_rating desc;
                 where total_rating >= 50
-                  & rating_count > 80 &
-                  game_modes = (1, 2) &
-                  themes != (1, 20, 22, 27)
-                  & platforms != null 
+                & rating_count > 80 &
+                game_modes = (1, 2) &
+                themes != (1, 20, 22, 27)
+                & platforms != null 
                   & platforms = (6, 48, 49, 167, 169)
                      & genres = (5);
                 limit 60;

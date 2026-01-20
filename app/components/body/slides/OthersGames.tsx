@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
 // swipper
 import { SwiperSlide, Swiper } from "swiper/react";
@@ -20,21 +20,16 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { url } from "inspector";
 
+// provider
+
+import { useLoading } from "@/app/contexts/LoadingContext";
+
 type MostPopularprops ={
     windowSize: number
 }
 
 
-
-const orbitron = Orbitron({weight:"800", subsets:["latin"]});
-const roboto = Roboto({weight:"800", subsets:["latin"]});
-const inter = Inter({weight:"400", subsets:["latin"]});
-const russoOne = Russo_One ({weight:"400", subsets:["latin"]});
-const audioWise = Audiowide({weight:"400", subsets:["latin"]});
 const OpenSans = Open_Sans({weight:"300", subsets:["latin"]})
-const fredoka = Fredoka({weight:"400", subsets:["latin"]});
-const baloo2 = Baloo_2({weight:"600", subsets:["latin"]});
-const nunito = Nunito({weight:"700", subsets:["latin"]});
 const bebasNeue = Bebas_Neue({weight:"400", subsets:["latin"]});
 const montserrat = Montserrat({weight:"300", subsets:["latin"]});
 const lato = Lato({weight:"400", subsets:["latin"]});
@@ -45,6 +40,8 @@ export default function OthersGames({windowSize}: MostPopularprops){
 
     const[currentSize,setCurrentSize] = useState<number>(0)
 
+    // context
+    const {isloaded, ToggleLoading} = useLoading();
 
     const[Racingames, setRacingames] = useState<any[]>([]);
     const[AdventureGames, setAdventureGames] = useState<any[]>([]);
@@ -69,12 +66,15 @@ export default function OthersGames({windowSize}: MostPopularprops){
             const data = await fetch(games.url);
             const response = await data.json();
             games.data(response.slice(0, 5));
+
         }
         LoagamesCategores(racing)
         LoagamesCategores(adventure)
         LoagamesCategores(shooter)
         LoagamesCategores(fight)
         LoagamesCategores(sport)
+
+
     },[])
 
 
@@ -87,17 +87,19 @@ export default function OthersGames({windowSize}: MostPopularprops){
 
               useEffect(()=>{
 
-                console.log("all categories:", gamesCategories);
+                // console.log("all categories:", gamesCategories);
 
                 gamesCategories.forEach((categories,index)=>{
-                    console.log(`categories:${index}: `, categories)
+                    // console.log(`categories:${index}: `, categories)
                     
                     for(let i = 0; i < categories.length; i++){
-                        console.log(`categoriesElements: `, categories[i].name)
+                        // console.log(`categoriesElements: `, categories[i].name)
                     }
                 })
 
             },[gamesCategories])
+
+
 
     function calculate(value:number):number{
         if(value <= 500) return 1
@@ -106,6 +108,32 @@ export default function OthersGames({windowSize}: MostPopularprops){
         if(value <= 1280) return 5
         return 5
     }
+
+useLayoutEffect(() => {
+    // Verifica se TODAS as categorias carregaram E se têm jogos
+    const allCategoriesLoaded = gamesCategories.every(category => 
+        Array.isArray(category) && category.length > 0
+    );
+
+    // Verifica se todos os jogos de todas as categorias têm as propriedades necessárias
+    const allGamesValid = gamesCategories.every(category =>
+        category.every(game => 
+            game && 
+            game.cover && 
+            game.cover.url && 
+            game.name
+        )
+    );
+
+    if (allCategoriesLoaded && allGamesValid) {
+
+        ToggleLoading(0) // CHANGE THE FIRST BOOLEAN INSIDE TEH ARRAY IN LOADINGCONTEXT
+    } else if (gamesCategories.some(cat => cat.length > 0)) {
+        // console.log("⚠️ Alguns jogos ainda não carregaram completamente");
+    } else {
+        // console.log("🔄 Aguardando carregamento dos jogos...");
+    }
+}, [gamesCategories])
 
     return(
         <div className="w-full h-[50em] sm:h-[40em] lg:h-[50em] flex justify-center 
@@ -177,56 +205,8 @@ export default function OthersGames({windowSize}: MostPopularprops){
                             <p className="z-20">View More</p>
                         </button>
                 </SwiperSlide>
-            ))}
-            
-                
+            ))}         
         </Swiper>
         </div>
     )
 }
-
-
-                // <SwiperSlide className={` !flex justify-center items-center flex-col gap-3.5
-                //     py-[2em]`}>
-                //         <h1 className={`${bebasNeue.className} text-[2em]`}>{Racingames[0]?.genres?.[0]?.name}</h1>
-                //         {Racingames.map((value, index)=>(
-                //             <div key={index} className=" w-[95%] h-auto rounded-2xl !flex justify-center 
-                //             items-center flex-col gap-3.5">
-                //             <div className=" w-full h-[6em] rounded-[.5em] flex justify-center items-center bg-gradient-to-bl
-                //                 from-[#9d14ff] to-[#FF9A00] p-0">
-                //                 <div className="w-[99%] h-[95%] bg-[#151515] rounded-[.5em] text-[#fff] flex flex-row items-center">
-                //                     <div className="h-full w-[25%] bg-[#151515]  rounded-[.5em]">
-                //                         <Image  src={`https:${value.cover.url.replace('t_thumb', 't_cover_big')}`}  
-                //                             alt={value.name}
-                //                             width={500}
-                //                             height={700}
-                //                             className="w-full h-full object-fill rounded-[.5em]"
-                //                         />
-                //                     </div>
-                //                 <div className="w-[90%] h-full p-[1em] relative">
-                //                     <p className={`${montserrat.className}
-                //                         w-full text-[.9em]`}>{value.name}</p>
-                //                     <div className=" w-[5em] flex justify-between flex-row absolute right-3 bottom-1">
-                //                         <button className=" w-[2.5em] h-[2.5em] flex justify-center items-center rounded-full
-                //                         active:bg-[#BF092F] group">
-                //                             <HeartIcon className="size-7 text-[#BF092F] 
-                //                             group-active:text-[#fff] hover:text-[#fff]"/>
-                //                         </button>
-                //                         <button className=" w-[2.5em] h-[2.5em] flex justify-center items-center rounded-full
-                //                         active:bg-[#068FFF] group">
-                //                             <ShoppingBagIcon className="size-7 text-[#068FFF] hover:text-[#fff] group-active:text-[#fff]"/>
-                //                         </button>
-                //                     </div>
-                //                     <p className={`${OpenSans.className} bg-gradient-to-bl
-                //                 from-[#9d14ff] to-[#FF9A00] w-[5em]
-                //                         flex justify-center rounded-[.5em]`}>R$ 59.99</p>
-                //                 </div>
-                //                 </div>
-                       
-                //             </div>
-                //         </div>
-                //         ))}
-                //     <button className={`${lato.className} h-[1.5em] bg-[#fff] 
-                //         text-[#151515] w-[90%] rounded-[.5em]
-                //         text-[1.5em]`}>View More</button>
-                // </SwiperSlide>

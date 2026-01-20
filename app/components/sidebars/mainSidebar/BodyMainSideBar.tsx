@@ -128,7 +128,7 @@ export default function BodyMainSidebar(){
 
             {/* your game button */}
             <li className="w-[95%] h-[3em] text-[#fff] items-center
-                flex-row">
+                flex-row hover:bg-[#fff] hover:text-[#151515] rounded-[.5em]">
               <button className=" w-full h-full flex justify-center px-0.5 items-center
                 flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000] focus:bg-[#fff] focus:text-[#151515]">
                   <RectangleStackIcon className="size-7"/>
@@ -142,7 +142,7 @@ export default function BodyMainSidebar(){
 
             {/* news button */}
             <li className="w-[95%] h-[3em] text-[#fff] items-center
-                flex-row">
+                flex-row hover:bg-[#fff] hover:text-[#151515] rounded-[.5em]">
               <button className={`w-full h-full flex justify-center px-0.5 items-center
                 flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
                 focus:bg-[#fff] focus:text-[#151515]`}>
@@ -175,7 +175,7 @@ export default function BodyMainSidebar(){
                     {dropdownsLists[0].map((value, index)=>(
                       <li key={index} className={`w-full h-[2.5em] border-0
                           transform transition-all duration-300 ease-in-out rounded-[.5em]
-                          ${value.animationCondition}
+                          ${value.animationCondition} hover:bg-[#fff] hover:text-[#151515]
                         `}>
                         <button className={`w-full h-full flex justify-center items-center gap-1
                         `}>
@@ -183,7 +183,7 @@ export default function BodyMainSidebar(){
                             text-[#151515]  ">
                               <FontAwesomeIcon icon={value.faUIcon} className={`value.size`}/>
                             </div>
-                            <p className={` ${montserrat.className} text-[#fff] w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
+                            <p className={` ${montserrat.className}  w-[8em] h-full flex justify-center items-center`}>{value.name}</p>
                         </button>
                       </li>
                     ))}
@@ -216,7 +216,7 @@ export default function BodyMainSidebar(){
                     {dropdownsLists[1].map((value, index)=>(
                       <li key={index} className={`w-full h-[2.5em] border-0
                           transform transition-all duration-300 ease-in-out rounded-[.5em]
-                          ${value.animationCondition}
+                          ${value.animationCondition} hover:bg-[#fff] hover:text-[#151515] rounded-[.5em]
                         `}>
                         <button className={`w-full h-full flex justify-center items-center gap-1 
                         focus:bg-[#fff] focus:text-[#151515]
@@ -232,7 +232,8 @@ export default function BodyMainSidebar(){
                 </ul>
             </li>
 
-              <li className="w-full h-[3em] text-[#fff] flex justify-center items-center">
+              <li className="w-full h-[3em] text-[#fff] flex justify-center items-center
+                hover:bg-[#fff] hover:text-[#151515] rounded-[.5em]">
               <button className=" w-[90%] h-full flex justify-center px-0.5 items-center
                 flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
                 focus:bg-[#fff] focus:text-[#151515]
@@ -243,7 +244,7 @@ export default function BodyMainSidebar(){
               </button>
             </li>
             <li className="w-[95%] h-[3em] text-[#fff] items-center
-                flex-row">
+                flex-row hover:bg-[#fff] hover:text-[#151515] rounded-[.5em]">
               <button className=" w-full h-full flex justify-center px-0.5 items-center
                 flex-row rounded-[.5em] active:bg-[#fff] active:text-[#000]
                 focus:bg-[#fff] focus:text-[#151515]">

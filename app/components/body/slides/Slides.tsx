@@ -6,8 +6,8 @@ import MostPopular from "./PopularSlides";
 import SlideMainGames from "./SlideMainGames";
 
 // components
-import Newsletters from "../../newsletters/Newsletters";
 import OthersGames from "./OthersGames";
+import UpRealeses from "../UpcomingRealeses/UpRealeses";
 
 
 export default function Slides(){
@@ -27,16 +27,11 @@ export default function Slides(){
     },[])
 
 
-    useEffect(() => {
-  console.log("🔍 Slides montado!");
-  return () => console.log("🧹 Slides desmontado!");
-}, []);
-
     return(
         <div className="w-full h-full ">
             {windowSize !== null && <MostPopular windowSize={windowSize} />}
             {windowSize !== null && <SlideMainGames windowSize={windowSize} />}
-            <Newsletters/>
+            <UpRealeses/>
             {windowSize !== null && <OthersGames windowSize={windowSize} />}
         </div>
     )

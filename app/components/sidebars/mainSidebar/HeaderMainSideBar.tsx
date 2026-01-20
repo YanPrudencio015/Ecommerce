@@ -42,10 +42,14 @@ export default function HeaderMainSidebar(){
             <span className={`w-[95%] h-[3em] flex justify-center 
               items-center flex-row border-0 bg-[#fff] rounded-[5px] px-1 gap-2
               relative left-0 transition-all ease-in-out duration-500
-              ${isOpen? 'bg-[#fff]':'bg-transparent'}`} onClick={()=>toggleSidebar()}>
+              ${isOpen? 'bg-[#fff]':'bg-transparent'}`}>
               <button className={`rounded-[10px] w-[2.8em] h-[90%] flex justify-center items-center
                  ${isOpen? 'text-[#151515]':'text-[#fff]'}`}>
-                <MagnifyingGlassIcon className="size-6"/>
+                  <div className="flex justify-center items-center 
+                     h-full lg:w-[3em] rounded-[.5em] cursor-pointer hover:bg-[#151515] 
+                    hover:text-[#fff]" onClick={()=>toggleSidebar()}>
+                    <MagnifyingGlassIcon className="size-6"/>
+                </div>
               </button>
               <input type="text" placeholder="search here..." 
                 className={`

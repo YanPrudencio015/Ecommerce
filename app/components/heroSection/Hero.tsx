@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image"
-import gameImage from '@/public/GameImages/game3.jpg'
+import gameImage from '@/public/GameImages/gameImage.jpg'
 import { UseSidebar } from "@/app/contexts/SidebarContext"
 
 // fonts
@@ -34,46 +34,54 @@ export default function HeroSection(){
 
     return(
         <div className={`relative w-full transition-all ease-in-out duration-300 bg-[#151515] z-20
-            ${isOpen? 'lg:h-[35em]':'lg:h-[40em]'}`}>
-            <Image src={gameImage}       
-                width={2000}
-                height={2000}
-                sizes=" 100vw, 50vw"
-                style={{ width: "100%", height: "100%"}} className="brightness-70" alt="gameImage"/>
+            ${isOpen? 'lg:h-[35em]':'lg:h-[30em]'} w-full h-[20em] group overflow-hidden`}>
+            <Image
+                src={gameImage}
+                fill
+                sizes="100vw"
+                className="object-cover brightness-70  transition-all ease-in duration-9000
+                    scale-100 group-hover:scale-110 group-hover:duration-9000"
+                alt="gameImage"
+                priority
+            />
 
                 {/* Game Info elements */}
-                <div className="bg-gradient-to-r from-[rgba(0,0,0,0.6)] to-[rgba(0,0,0,0.1)] 
-                    w-[13em] md:w-[20em] lg:w-[25em] h-full absolute 
-                    bottom-0 text-white p-2 flex flex-col justify-end md:from-[rgba(0,0,0,0.8)] 
-                    md:to-transparent md:justify-center lg:justify-end lg:pb-[6em]
-                     ">
-                <h2 className={`${OpenSans.className} text-[1em] md:text-[2em]`}>Red Dead Redemption 2</h2>
-                <div className="w-full flex justify-between items-center ">
+                <div className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)] 
+                    w-full h-[8em] lg:w-full lg:h-[13em] md:h-[15em] absolute  
+                    bottom-0 text-white p-2 flex flex-col justify-end md:from-[rgba(0,0,0,0)] 
+                    md:to-[rgba(0,0,0,0.9)] md:justify-center lg:justify-end lg:pb-[6em] transition-all duration-700
+                    ease-[cubic-bezier(0.95,0.05,0.795,0.035)] 
+                    ">
+                <h2 className={`${OpenSans.className} text-[1em] md:text-[2em]`}>Game Name</h2>
+                <div className="w-full flex justify-between items-start flex-col">
                     <p className={`${fredoka.className} text-[rgba(255,255,255,.5)] 
-                        text-[.7em] md:text-[1.2em] lg:text-[1.5em] `}>Action & adventure</p>
-                    <div>
-                        <FontAwesomeIcon icon={faStar} className="text-[.6em] md:text-[1em] lg:text-[1.2em]" />
-                        <FontAwesomeIcon icon={faStar} className="text-[.6em] md:text-[1em] lg:text-[1.2em]" />
-                        <FontAwesomeIcon icon={faStar} className="text-[.6em] md:text-[1em] lg:text-[1.2em]" />
-                        <FontAwesomeIcon icon={faStar} className="text-[.6em] md:text-[1em] lg:text-[1.2em]" />
-                        <FontAwesomeIcon icon={faStar} className="text-[.6em] md:text-[1em] lg:text-[1.2em]" />
+                        text-[.7em] md:text-[1.2em] lg:text-[1.5em] `}>Game gengers</p>
+                    <div className={`${montserrat.className} border-[#fff] lg:w-[25vw] 
+                        lg:h-[25vh] text-center hidden sm:inline sm:h-[10em] sm:w-[25em] md:w-[20em]
+                        md:text-[.7em] md:text-center lg:text-[1em]`}>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui non animi ad 
+                            culpa nobis est aspernatur dolores corporis illo delectus assumenda, 
+                            sint incidunt perspiciatis debitis consequuntur inventore, 
+                            harum deleniti adipisci.
+                        </p>
                     </div>
                 </div>
-                <div className=" text-[#fff] h-[2em] md:h-[4em] flex justify-around items-center">
-                    <button className={`bg-[#00993d] w-[5em] h-full rounded-[.2em] 
-                        hover:bg-[rgba(0,153,61,.5)] focus:bg-[[rgba(0,153,61,.5)] focus:text-[#fff]
-                        transition-all ease-in-out duration-100 cursor-pointer 
-                        lg:w-[9em] lg:text-[1.2em] ${lato.className}`}>$ 59.99</button>
-
-                    <div className=" flex justify-between gap-3 h-full w-[5em] md:items-center md:w-[8em]">
-                        <button className="rounded-[2em] w-[3em] flex 
-                            justify-center items-center h-[2em] md:h-[3em] bg-[#151515] hover:bg-[#fff] group
-                            cursor-pointer ">
-                            <ShoppingBagIcon className="size-5 md:size-7 text-[#fff] group-hover:text-[#068FFF]" /></button>
-                        <button className="rounded-[2em] w-[3em] flex 
-                            justify-center items-center h-[2em] md:h-[3em] bg-[#151515]  hover:bg-[#fff] group cursor-pointer">
-                            <HeartIcon className="size-5 md:size-7 text-[#fff] group-hover:text-[#068FFF]" /></button>
-                    </div>
+                <div className=" relative w-full sm:w-[6em] h-[20em] flex justify-around items-end
+                    pb-1 md:w-[15em] md:h-[12em] md:absolute md:right-0 md:top-[50%]
+                    md:translate-y-[-50%] md:flex-col md:justify-end md:gap-[1em] md:items-center
+                    md:px-1 lg:right-15 lg:top-[20%]">
+                        <button className={`bg-[#068FFF] text-white w-[6em] h-[2em] rounded-[2em]
+                            text-[1em] md:text-[1.2em] md:w-full md:h-[1.5em] md:rounded-md lg:h-[3em]
+                            lg:bg-transparent lg:border lg:border-[#068FFF] lg:hover:bg-[#068FFF]
+                            lg:cursor-pointer`}>Buy now</button>
+                        <p className={`absolute top-0 left-[50%] translate-x-[-50%]
+                            border-white md:text-[2em] text-[#F3F4F4] ${lato.className}`}>$59,90</p>
+                        <button className={`bg-[#068FFF] text-white w-[6em] h-[2em] rounded-[2em]
+                            text-[1em] md:text-[1.2em] md:w-full md:h-[1.5em] md:rounded-md
+                            lg:h-[3em] lg:bg-transparent lg:border lg:border-[#068FFF] 
+                            lg:hover:bg-[#068FFF] lg:cursor-pointer   `}>
+                            Wish list
+                        </button>
                 </div>
             </div>
         </div>

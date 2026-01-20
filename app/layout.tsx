@@ -6,6 +6,8 @@ import "./globals.css";
 // providers
 
 import { SidebarProvider } from "./contexts/SidebarContext";
+import { LoadingProvider } from "./contexts/LoadingContext";
+import { GameProvider } from "./contexts/GameContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,9 +48,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SidebarProvider>
-          {children}
-        </SidebarProvider>
+        <GameProvider>
+          <LoadingProvider>
+            <SidebarProvider>
+              {children}
+            </SidebarProvider>
+          </LoadingProvider>
+        </GameProvider>
       </body>
     </html>
   );
