@@ -46,7 +46,7 @@ export default function HeroSection(){
             />
 
                 {/* Game Info elements */}
-                <div className="bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)] 
+                <div className=" from-[rgba(0,0,0,0)] to-[rgba(0,0,0,0.9)] 
                     w-full h-[8em] lg:w-full lg:h-[13em] md:h-[15em] absolute  
                     bottom-0 text-white p-2 flex flex-col justify-end md:from-[rgba(0,0,0,0)] 
                     md:to-[rgba(0,0,0,0.9)] md:justify-center lg:justify-end lg:pb-[6em] transition-all duration-700

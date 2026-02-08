@@ -103,7 +103,7 @@ export default function MostPopular({windowSize}: MostPopularprops){
 
 
     useEffect(()=>{
-        ToggleLoading(1) // change the LOADINGCONTEXT
+        ToggleLoading(1) // change the LOADING CONTEXT
     },[allRendered])
 
 
@@ -144,7 +144,8 @@ export default function MostPopular({windowSize}: MostPopularprops){
                     <SwiperSlide key={index} className={`!flex justify-center items-center `}>
                         <div onClick={()=>toGamePage(value.name)} 
                             className="p-[1px] bg-gradient-to-r from-[#068FFF] to-[#0A5EB0]
-                            w-[60%] lg:w-[70%] h-[80%] lg:h-[90%] rounded-lg flex justify-center items-center cursor-pointer overflow-hidden">
+                                        w-[60%] md:w-[75%] lg:w-[70%] h-[80%] md:h-[80%] lg:h-[90%] rounded-lg flex justify-center 
+                                        items-center cursor-pointer overflow-hidden">
                             <div className="w-[99%] h-[99%] rounded-lg bg-[#111] relative z-0">
                                 <div className="absolute w-full h-full bg-[rgba(0,0,0,.3)] 
                                 lg:bg-[rgba(0,0,0,.4)] lg:hover:bg-[rgba(0,0,0,.1)] z-20
