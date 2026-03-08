@@ -25,19 +25,55 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 @layer utilities {
   .scrollbar-hide {
     /* Firefox */
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     /* Safari e Chrome */
     display: none;
   }
 }
 
+@keyframes stretchWidth {
+  0% {
+    width: 50%;
+    right: 49%;
+  }
+  50% {
+    width: 99%;
+    right: 0%;
+  } /* Dilatação máxima no meio do caminho */
+  100% {
+    width: 50%;
+    right: 0%;
+  }
+}
+
+@keyframes shrinkWidth {
+  0% {
+    width: 55%;
+    right: 0%;
+  }
+  50% {
+    width: 100%;
+    right: 0%;
+  }
+  100% {
+    width: 50%;
+    right: 49%;
+  }
+}
+
+.animate-go {
+  animation: stretchWidth 0.9s ease-in-out forwards;
+}
+
+.animate-back {
+  animation: shrinkWidth 0.9s ease-in-out forwards;
+}
 
 /* 
 #9d14ff purple
