@@ -76,7 +76,10 @@ export default function OthersGames({ windowSize }: MostPopularprops) {
     async function LoagamesCategores(games: GameCategories) {
       const data = await fetch(games.url);
       const response = await data.json();
-      games.data(response.slice(0, 5));
+      const results = Array.isArray(response)
+        ? response
+        : (response.results ?? response.games ?? []);
+      games.data(results.slice(0, 5));
     }
     LoagamesCategores(racing);
     LoagamesCategores(adventure);

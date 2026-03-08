@@ -10,10 +10,13 @@ export async function getTwitchToken() {
 
   const res = await fetch(
     `https://id.twitch.tv/oauth2/token?client_id=${process.env.TWITCH_CLIENT_ID}&client_secret=${process.env.TWITCH_CLIENT_SECRET}&grant_type=client_credentials`,
-    { method: "POST" }
+    { method: "POST" },
   );
+  console.log("O claude falou para eu parar de mandar o meu token: ", res);
 
   if (!res.ok) {
+    const errorBody = await res.text();
+    console.error("Status:", res.status, "Erro:", errorBody);
     throw new Error("❌ Falha ao gerar novo token da Twitch");
   }
 

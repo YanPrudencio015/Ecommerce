@@ -86,7 +86,7 @@ export default function UpRealeses() {
       try {
         const data = await fetch("api/realeses");
         const res = await data.json();
-        setAllgames(res.results);
+        setAllgames(Array.isArray(res.results) ? res.results : []);
       } catch (error) {
         console.log("Erro ao carregar a API: ", error);
       }

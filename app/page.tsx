@@ -53,23 +53,23 @@ export default function Home() {
     // console.log("isloaded: ", isloaded)
   }, [isloaded]);
   return (
-    // <div className="text-[#000] border-0 outline-0 box-border">
-    //   <div
-    //     className={`w-full h-screen  fixed flex justify-center items-center text-white
-    //       ${
-    //         allComponentsLoaded === false
-    //           ? "bg-[#151515] z-10000000"
-    //           : "bg-transparent pointer-events-none z-[-10]"
-    //       }`}
-    //   >
-    //     Level UP
-    //   </div>
-    //   <Header />
-    //   <MainSidebar/>
-    //   <SidebarComponent />
-    //   <Body />
-    // </div>
+    <div className="text-[#000] border-0 outline-0 box-border">
+      <div
+        className={`w-full h-screen  fixed flex justify-center items-center text-white
+          ${
+            allComponentsLoaded === false
+              ? "bg-[#151515] z-10000000"
+              : "bg-transparent pointer-events-none z-[-10]"
+          }`}
+      >
+        Level UP
+      </div>
+      <Header />
+      <MainSidebar />
+      <SidebarComponent />
+      <Body />
+    </div>
 
-    <LoginPage />
+    // <LoginPage />
   );
 }
