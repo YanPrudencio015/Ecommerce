@@ -1,143 +1,96 @@
-# 🎮 LevelUp — Digital Games Ecommerce
+# 🎮 LevelUp — E-commerce de Jogos Digitais
 
-**LevelUp** is a full-stack ecommerce platform for digital games on PC, Xbox, and PlayStation. Users can create accounts, browse and purchase games, write reviews, add friends, join communities, and stay updated with gaming industry news.
+> Plataforma de e-commerce para jogos digitais de PC, Xbox e PlayStation, com foco em performance, experiência de usuário e arquitetura escalável com Next.js 15.
 
-🌐 **Live Demo:** [ecommerce-eight-theta-66.vercel.app](https://ecommerce-eight-theta-66.vercel.app)
-
----
-
-## ✨ Features
-
-- 🔐 **User Authentication** — Create an account and manage your profile
-- 🛒 **Game Store** — Browse and buy digital games across PC, Xbox, and PlayStation
-- 💬 **Reviews & Comments** — Leave and read comments on game pages
-- 👥 **Friends & Network** — Add friends and send messages
-- 🌐 **Communities** — Join gaming communities and connect with players
-- 📰 **Gaming News** — Read the latest news from the gaming industry
-- ❤️ **Wishlist** — Save games for later
-- 🔔 **Notifications** — Stay updated on activity
+**Deploy:** [ecommerce-eight-theta-66.vercel.app](https://ecommerce-eight-theta-66.vercel.app) · **Status:** Em desenvolvimento ativo
 
 ---
 
-## 🛠️ Tech Stack
+## O problema
 
-| Layer        | Technology                          |
-|--------------|-------------------------------------|
-| Framework    | Next.js 14+ (App Router)            |
-| Language     | TypeScript (97.7%)                  |
-| Styling      | Tailwind CSS                        |
-| Backend      | Next.js API Routes                  |
-| Utilities    | Shell scripts (`setup.sh`)          |
-| Deployment   | Vercel                              |
+Plataformas de jogos como Steam e Xbox Store oferecem experiências ricas, mas construir uma do zero exige decisões arquiteturais cuidadosas: como gerenciar estado global sem prop drilling excessivo? Como garantir que dados sensíveis de APIs não vazem para o cliente? Como organizar fontes e layout para uma identidade visual coerente?
+
+O LevelUp nasceu como laboratório para essas decisões — construindo uma plataforma real de e-commerce de ponta a ponta, com autenticação, catálogo por plataforma, wishlist, sistema de comunidades e notificações.
 
 ---
 
-## 📁 Project Structure
+## ✦ Funcionalidades
+
+- Catálogo de jogos separado por plataforma (PC, Xbox, PlayStation)
+- Sistema de autenticação e criação de conta
+- Wishlist e carrinho por usuário
+- Feed de notificações
+- Comunidades e sistema de amigos
+- Seção de lançamentos futuros
+- Layout responsivo com sidebar dinâmica
+
+---
+
+## 🛠 Stack e decisões técnicas
+
+| Tecnologia | Por que foi escolhida |
+|---|---|
+| **Next.js 15 (App Router + Turbopack)** | Separação entre Server e Client Components — lógica de dados e autenticação fica no servidor, sem expor tokens no cliente. Turbopack reduz tempo de build em desenvolvimento |
+| **TypeScript** | Tipagem das respostas de API desde o início evita erros silenciosos em estruturas de dados de produtos e usuários |
+| **React Context API** | Três contextos independentes (`GameContext`, `SidebarContext`, `LoadingContext`) segmentam responsabilidades: dados de jogo, estado de UI e feedback de carregamento — sem acoplamento desnecessário |
+| **Axios** | Abstração de requisições HTTP com interceptors para tratamento centralizado de erros e tokens |
+| **Motion (Framer Motion)** | Animações de UI declarativas sem overhead de CSS customizado |
+| **Swiper** | Carrossel de jogos com performance nativa, substituindo implementações manuais |
+| **Tailwind CSS v4** | Estilização responsiva com design system consistente |
+
+---
+
+## 🧠 Decisões de arquitetura
+
+**Gerenciamento de estado com Context API segmentado**
+
+Em vez de um único contexto global (que re-renderizaria toda a árvore a cada mudança), o projeto usa três contextos com responsabilidades bem definidas:
 
 ```
-Ecommerce/
-├── app/              # App Router — pages, layouts and API routes
-├── lib/              # Utility functions, helpers, and shared logic
-├── public/           # Static assets (images, icons)
-├── .vscode/          # Editor settings
-├── setup.sh          # Project setup script
-├── tailwind.config.js
-├── next.config.ts
-├── tsconfig.json
-└── package.json
+GameProvider        → dados de produtos, catálogo, wishlist
+LoadingProvider     → estado de loading global (spinners, skeletons)
+SidebarProvider     → estado de UI da sidebar (aberta/fechada)
 ```
+
+Isso garante que uma mudança no estado da sidebar não dispara re-renders nos componentes de produto.
+
+**Server Components para dados sensíveis**
+
+Chamadas para APIs externas e lógica de autenticação são feitas em Server Components, mantendo credenciais fora do bundle do cliente — padrão equivalente ao adotado no Safe Ride para a API do Fogo Cruzado.
 
 ---
 
-## ⚙️ Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) `v18+`
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-
-### 1. Clone the repository
+## ⚙️ Rodando localmente
 
 ```bash
-git clone https://github.com/YanPrudencio015/Ecommerce.git
+git clone https://github.com/YanPrudencio015/Ecommerce
 cd Ecommerce
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
-# or
-yarn install
-```
-
-Or use the provided setup script:
-
-```bash
-bash setup.sh
-```
-
-### 3. Configure environment variables
-
-Create a `.env.local` file in the root:
-
-```env
-# Example — add your actual keys here
-NEXT_PUBLIC_API_URL=your_api_url
-```
-
-### 4. Run the development server
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Acesse `http://localhost:3000`
 
 ---
 
-## 🧭 Navigation
+## 📁 Estrutura do projeto
 
-The app includes the following main sections:
-
-| Section         | Description                                      |
-|-----------------|--------------------------------------------------|
-| **Home**        | Featured games and upcoming releases             |
-| **Store**       | Browse games by category: PC, Xbox, PlayStation  |
-| **Your Games**  | Library of purchased games                       |
-| **Network**     | Friends, messages, and communities               |
-| **Notifications** | Activity and updates                           |
-| **Settings**    | Account preferences                              |
-| **Support**     | Help center, refunds, and troubleshooting        |
+```
+app/
+├── contexts/         # GameContext, SidebarContext, LoadingContext
+├── components/       # Componentes reutilizáveis de UI
+├── api/              # Route Handlers (Server-side)
+├── globals.css       # Design tokens e estilos globais
+lib/                  # Configurações e utilitários
+public/               # Assets estáticos
+```
 
 ---
 
-## 🚀 Deploy on Vercel
+## 🔜 Roadmap
 
-The project is already live on Vercel. To deploy your own instance:
-
-1. Push the repo to GitHub
-2. Import it on [Vercel](https://vercel.com/new)
-3. Add any required environment variables
-4. Deploy 🚀
-
----
-
-## 📚 Resources
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Vercel Deployment Guide](https://nextjs.org/docs/app/building-your-application/deploying)
-
----
-
-## 👤 Author
-
-**Yan Prudencio**  
-GitHub: [@YanPrudencio015](https://github.com/YanPrudencio015)
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+- [ ] Integração com API real de catálogo de jogos (RAWG ou IGDB)
+- [ ] Sistema de pagamento (Stripe)
+- [ ] Persistência de carrinho e wishlist (banco de dados)
+- [ ] Reviews e comentários por produto
+- [ ] Autenticação com NextAuth.js
